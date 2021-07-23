@@ -1,11 +1,13 @@
 var button = document.getElementById('button');
 var cname = document.getElementById('cname');
 var temperature = document.getElementById('temperature');
-console.log(cname);
+const api={
+    key: "5141e7b91048915162033fd01b3f4f0f",
+    base: "https://api.openweathermap.org/data/2.5/"
+  }
 button.addEventListener('click', function(){
     var cityName = document.getElementById("name").value;
-    fetch('https://api.openweathermap.org/data/2.5/weather?q='+cityName+
-    '&appid=5141e7b91048915162033fd01b3f4f0f')
+    fetch(`${api.base}weather?q=${cityName}&appid=${api.key}`)
     .then(response => response.json())
     .then(data =>{
         console.log(data);
@@ -17,4 +19,3 @@ button.addEventListener('click', function(){
     })
     .catch(err => alert('City '+ cityName +' not found.'))
 })
-// dkfmksmfks
